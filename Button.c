@@ -1,9 +1,3 @@
-/*
- * Button.c
- *
- * Created: 10/6/2022 7:24:07 PM
- *  Author: AMIT
- */ 
 
 #include "Button.h"
 

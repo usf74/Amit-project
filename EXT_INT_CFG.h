@@ -1,9 +1,3 @@
-/*
- * EXT_INT_CFG.h
- *
- * Created: 10/18/2022 9:59:23 PM
- *  Author: AMIT
- */ 
 
 
 #ifndef EXT_INT_CFG_H_
@@ -16,7 +10,8 @@
 
 // EXT INT Trigger
 #define EXT0_INT_Trigger			EXT0_Rising_Edge
-
+#define EXT1_INT_Trigger			EXT0_Rising_Edge
+#define EXT2_INT_Trigger			EXT2_Rising_Edge
 
 
 

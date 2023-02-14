@@ -27,7 +27,7 @@ int main(void)
 					State_On(); break;
 			case OFF:
 					State_Off(); break;
-			case SET
+			case SET:
 					State_Set_Temp(); break;
 		}
 	}

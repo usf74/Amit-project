@@ -1,9 +1,3 @@
-/*
- * ADC.c
- *
- * Created: 10/23/2022 9:35:34 PM
- *  Author: AMIT
- */ 
 
 #include "ADC.h"
 

@@ -1,9 +1,3 @@
-/*
- * DIO.c
- *
- * Created: 9/29/2022 10:02:06 PM
- *  Author: AMIT
- */ 
 
 #include "DIO.h"
 

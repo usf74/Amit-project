@@ -1,4 +1,3 @@
-//states
 
 #include "app.h"
 extern Uint8 state,Set_Temp,Avg_Temp;

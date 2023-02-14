@@ -1,9 +1,3 @@
-/*
- * Timers.c
- *
- * Created: 10/27/2022 9:34:44 PM
- *  Author: AMIT
- */ 
 
 #include "Timers.h"
 #include "app.h"

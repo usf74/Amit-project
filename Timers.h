@@ -1,10 +1,3 @@
-/*
- * Timers.h
- *
- * Created: 10/27/2022 9:34:58 PM
- *  Author: AMIT
- */ 
-
 
 #ifndef TIMERS_H_
 #define TIMERS_H_

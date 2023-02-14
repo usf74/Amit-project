@@ -1,8 +1,10 @@
 main.d main.o: .././main.c .././LED.h .././LED_CFG.h .././DIO.h \
- .././MCU.h .././std.h .././Bit_Math.h .././LCD.h .././LCD_CFG.h \
- .././EXT_INT.h .././EXT_INT_CFG.h .././Interrupts.h \
- .././Interrupts_CFG.h .././Keypad.h .././Keypad_CFG.h .././ADC.h \
- .././ADC_CFG.h .././Timers.h .././Timers_CFG.h \
+ .././MCU.h .././std.h .././Bit_Math.h .././EXT_INT.h .././EXT_INT_CFG.h \
+ .././Interrupts.h .././Interrupts_CFG.h .././ADC.h .././ADC_CFG.h \
+ .././Timers.h .././Timers_CFG.h .././app.h .././S7.h .././S7_CFG.h \
+ .././EEPROM.h .././Temp_Sensor.h .././Temp_Sensor_CFG.h \
+ .././Cooling_Element.h .././Relay.h .././Relay_CFG.h \
+ .././Heating_Element.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -31,10 +33,6 @@ main.d main.o: .././main.c .././LED.h .././LED_CFG.h .././DIO.h \
 
 .././Bit_Math.h:
 
-.././LCD.h:
-
-.././LCD_CFG.h:
-
 .././EXT_INT.h:
 
 .././EXT_INT_CFG.h:
@@ -43,10 +41,6 @@ main.d main.o: .././main.c .././LED.h .././LED_CFG.h .././DIO.h \
 
 .././Interrupts_CFG.h:
 
-.././Keypad.h:
-
-.././Keypad_CFG.h:
-
 .././ADC.h:
 
 .././ADC_CFG.h:
@@ -54,6 +48,26 @@ main.d main.o: .././main.c .././LED.h .././LED_CFG.h .././DIO.h \
 .././Timers.h:
 
 .././Timers_CFG.h:
+
+.././app.h:
+
+.././S7.h:
+
+.././S7_CFG.h:
+
+.././EEPROM.h:
+
+.././Temp_Sensor.h:
+
+.././Temp_Sensor_CFG.h:
+
+.././Cooling_Element.h:
+
+.././Relay.h:
+
+.././Relay_CFG.h:
+
+.././Heating_Element.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
