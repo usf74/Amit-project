@@ -1,10 +1,3 @@
-/*
- * Button.h
- *
- * Created: 10/6/2022 7:24:19 PM
- *  Author: AMIT
- */ 
-
 
 #ifndef BUTTON_H_
 #define BUTTON_H_

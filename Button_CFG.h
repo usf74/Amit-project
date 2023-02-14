@@ -1,9 +1,3 @@
-/*
- * Button_CFG.h
- *
- * Created: 10/6/2022 7:24:42 PM
- *  Author: AMIT
- */ 
 
 
 #ifndef BUTTON_CFG_H_

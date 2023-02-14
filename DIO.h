@@ -1,9 +1,3 @@
-/*
- * DIO.h
- *
- * Created: 9/29/2022 10:02:16 PM
- *  Author: AMIT
- */ 
 
 
 #ifndef DIO_H_

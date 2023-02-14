@@ -1,6 +1,10 @@
 Timers.d Timers.o: .././Timers.c .././Timers.h .././Timers_CFG.h \
  .././DIO.h .././MCU.h .././std.h .././Bit_Math.h .././Interrupts.h \
- .././Interrupts_CFG.h \
+ .././Interrupts_CFG.h .././app.h .././LED.h .././LED_CFG.h .././S7.h \
+ .././S7_CFG.h .././EXT_INT.h .././EXT_INT_CFG.h .././EEPROM.h \
+ .././Temp_Sensor.h .././ADC.h .././ADC_CFG.h .././Temp_Sensor_CFG.h \
+ .././Cooling_Element.h .././Relay.h .././Relay_CFG.h \
+ .././Heating_Element.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -29,6 +33,38 @@ Timers.d Timers.o: .././Timers.c .././Timers.h .././Timers_CFG.h \
 .././Interrupts.h:
 
 .././Interrupts_CFG.h:
+
+.././app.h:
+
+.././LED.h:
+
+.././LED_CFG.h:
+
+.././S7.h:
+
+.././S7_CFG.h:
+
+.././EXT_INT.h:
+
+.././EXT_INT_CFG.h:
+
+.././EEPROM.h:
+
+.././Temp_Sensor.h:
+
+.././ADC.h:
+
+.././ADC_CFG.h:
+
+.././Temp_Sensor_CFG.h:
+
+.././Cooling_Element.h:
+
+.././Relay.h:
+
+.././Relay_CFG.h:
+
+.././Heating_Element.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 

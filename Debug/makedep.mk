@@ -4,17 +4,15 @@
 
 ADC.c
 
-Button.c
+app.c
 
-Buzz.c
+Button.c
 
 DIO.c
 
+EEPROM.c
+
 EXT_INT.c
-
-Keypad.c
-
-LCD.c
 
 LED.c
 

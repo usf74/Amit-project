@@ -1,9 +1,3 @@
-/*
- * ADC_CFG.h
- *
- * Created: 10/23/2022 9:36:04 PM
- *  Author: AMIT
- */ 
 
 
 #ifndef ADC_CFG_H_

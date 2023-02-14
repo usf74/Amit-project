@@ -6,11 +6,11 @@
 #include "DIO.h"
 
 //Relay0 Port & Pin
-#define Relay0_Port			DIO_PORTA
-#define Relay0_PIN			DIO_PIN_2
+#define Relay0_Port			DIO_PORTB
+#define Relay0_PIN			DIO_PIN_5
 
-#define Relay1_Port			DIO_PORTA
-#define Relay1_PIN			DIO_PIN_2
+#define Relay1_Port			DIO_PORTB
+#define Relay1_PIN			DIO_PIN_4
 
 
 

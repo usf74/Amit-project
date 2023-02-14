@@ -1,9 +1,4 @@
-/*
- * ADC.h
- *
- * Created: 10/23/2022 9:35:49 PM
- *  Author: AMIT
- */ 
+
 #ifndef ADC_H_
 #define ADC_H_
 

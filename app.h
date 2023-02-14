@@ -1,9 +1,16 @@
+
+#ifndef APP_H_
+#define APP_H_
+
+
 #include "LED.h"
 #include "Timers.h"
 #include "S7.h"
 #include "EXT_INT.h"
 #include "EEPROM.h"
 #include "Temp_Sensor.h"
+#include "Cooling_Element.h"
+#include "Heating_Element.h"
 
 #define OFF 0
 #define ON 1
@@ -25,3 +32,6 @@ void State_Set_Temp();
 void State_On();
 void State_Off();
 void App_Init();
+
+
+#endif

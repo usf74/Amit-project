@@ -1,9 +1,3 @@
-/*
- * Timers_CFG.h
- *
- * Created: 10/27/2022 9:35:09 PM
- *  Author: AMIT
- */ 
 
 
 #ifndef TIMERS_CFG_H_

@@ -5,8 +5,8 @@
 #include "DIO.h"
 
 // LED0 Port & Pin
-#define LED0_Port			DIO_PORTC
-#define LED0_PIN			DIO_PIN_2
+#define LED0_Port			DIO_PORTB
+#define LED0_PIN			DIO_PIN_0
 
 // LED1 Port & Pin
 #define LED1_Port			DIO_PORTC
