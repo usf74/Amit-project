@@ -22,7 +22,7 @@
 // S7 Control Pins
 #define S7_E1_PIN			DIO_PIN_1
 #define S7_E2_PIN			DIO_PIN_0
-#define S7_DP_PIN			DIO_PIN_3
+#define S7_DP_PIN			DIO_PIN_6
 
 
 

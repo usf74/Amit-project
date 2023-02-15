@@ -18,11 +18,11 @@
 #define OFF 0
 #define ON 1
 #define SET 2
-#define Addr 0x500
+#define Addr 0x0
 
 // Parameters
 #define T_Temp 100
-#define T_Blink 500
+#define T_Blink 1000
 #define T_Set   5000
 
 #define MAX_TEMP 75

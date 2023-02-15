@@ -28,7 +28,7 @@
 /************************************************************************/
 
 // Timer2 Mode
-#define Timer2_Mode			T2_CTC
+#define Timer2_Mode			T2_OVF
 
 // Timer2 CLK
 #define Timer2_CLK			T2_1024

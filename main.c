@@ -3,9 +3,9 @@
 
 
 
-Uint8 state=OFF,Set_Temp=60,Avg_Temp=74;
-Uint8 Temp_Arr[10]={10,10,0,50,60,30,10,50,50,50};
-
+Uint8 state=OFF,Avg_Temp;
+Uint8 Temp_Arr[10];
+Uint8 Set_Temp=60;
 
 int main(void)
 {
@@ -32,28 +32,34 @@ ISR(INT0_vect)
 
 ISR(INT1_vect)
 {
-	state=SET;
-	Set_Temp += 5;
-	if (Set_Temp>MAX_TEMP)
+	if (state==SET || state==ON)
 	{
-		Set_Temp=MAX_TEMP;
+		state=SET;
+		Set_Temp += 5;
+		if (Set_Temp>MAX_TEMP)
+		{
+			Set_Temp=MAX_TEMP;
+		}
+		EEPROM_WriteByte(Addr,Set_Temp);
+		T0_Delay(T_Set);
+		T0_Start();
 	}
-	EEPROM_WriteByte(Addr,Set_Temp);
-    T0_Delay(T_Set);
-    T0_Start();
 
 }
 
 ISR(INT2_vect)
 {
-	state=SET;
-	Set_Temp -= 5;
-	if (Set_Temp<MIN_TEMP)
+	if (state==SET || state==ON)
 	{
-		Set_Temp=MIN_TEMP;
+		state=SET;
+		Set_Temp -= 5;
+		if (Set_Temp<MIN_TEMP)
+		{
+			Set_Temp=MIN_TEMP;
+		}
+		EEPROM_WriteByte(Addr,Set_Temp);
+		T0_Delay(T_Set);
+		T0_Start();
 	}
-	EEPROM_WriteByte(Addr,Set_Temp);
-    T0_Delay(T_Set);
-    T0_Start();
 
 }

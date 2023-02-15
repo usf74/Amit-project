@@ -3,6 +3,7 @@
 extern Uint8 state,Set_Temp,Avg_Temp;
 void App_Init()
 {
+	EEPROM_WriteByte(Addr,Set_Temp);
     T0_Init();
     T2_Init();
     Temp_Sensor_Init();
@@ -13,7 +14,7 @@ void App_Init()
     EXT1_INT_Init();
     EXT2_INT_Init();
 	S7_Init();
-    EEPROM_WriteByte(Addr,Set_Temp);
+    
 
     state=OFF;
 }
@@ -40,10 +41,13 @@ void State_On()
     
     if (Avg_Temp<(Set_Temp-Thresh_Temp))
     {
+		//Start timer for LED Blinking
+		T2_Delay(T_Blink);
+		T2_Start();
         //Heating
         Cooling_Element_OFF();
         Heating_Element_ON();
-        LED0_ON();
+        
         while((Avg_Temp<Set_Temp) && (state==ON))
         {
             S7_Display(Avg_Temp);
@@ -52,9 +56,8 @@ void State_On()
 
     else if (Avg_Temp>(Set_Temp+Thresh_Temp))
     {
-        //Start timer for LED Blinking
-        T2_Delay(T_Blink);
-	    T2_Start();
+
+		LED0_ON();
         //Start cooling
         Cooling_Element_ON();
         Heating_Element_OFF();

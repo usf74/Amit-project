@@ -178,7 +178,7 @@ ISR(TIMER2_OVF_vect)
 	count++;
 	if (count == T2_OVF_num)
 	{
-		// Write your code here
+
 		//--------------
 		if(state==ON)
 		{
