@@ -13,6 +13,8 @@ void App_Init()
     EXT0_INT_Init();
     EXT1_INT_Init();
     EXT2_INT_Init();
+	Set_Temp=Default_Temp;
+	EEPROM_WriteByte(Addr,Set_Temp);
 	S7_Init();
     
 

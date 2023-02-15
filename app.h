@@ -6,6 +6,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
+#include "app_CFG.h"
 #include "LED.h"
 #include "Timers.h"
 #include "S7.h"
@@ -20,14 +21,6 @@
 #define SET 2
 #define Addr 0x0
 
-// Parameters
-#define T_Temp 100
-#define T_Blink 1000
-#define T_Set   5000
-
-#define MAX_TEMP 75
-#define MIN_TEMP 35
-#define Thresh_Temp 5   //Threshold temperature
 
 //Func prototypes
 Uint8 AVG(Uint8 *Data);

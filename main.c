@@ -5,7 +5,7 @@
 
 Uint8 state=OFF,Avg_Temp;
 Uint8 Temp_Arr[10];
-Uint8 Set_Temp=60;
+Uint8 Set_Temp;
 
 int main(void)
 {

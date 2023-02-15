@@ -139,6 +139,9 @@
     <Compile Include="app.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="app_CFG.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Bit_Math.h">
       <SubType>compile</SubType>
     </Compile>
