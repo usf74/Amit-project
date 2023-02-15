@@ -70,26 +70,30 @@ void State_On()
         Cooling_Element_OFF();
         Heating_Element_OFF();
         LED0_OFF();
-        while ((Avg_Temp>=(Set_Temp-Thresh_Temp)) && ((Avg_Temp<=(Set_Temp+Thresh_Temp))) && (state==ON));    //Loop to await change in temperature with a +-5 threshold
+        while ((Avg_Temp>=(Set_Temp-Thresh_Temp)) && ((Avg_Temp<=(Set_Temp+Thresh_Temp))) && (state==ON))  //Loop to await change in temperature with a +-5 threshold
+		{
+			S7_Display(Avg_Temp);    
+		}
     }
 
 }
 void State_Set_Temp()
 {
     // 5 seconds timer start
-    T0_Delay(T_Set);
-    T0_Start();
 
     T2_Delay(T_Blink);
     T2_Start();
-    while(state==SET);
+    while(state==SET)
+	{
+		S7_Display(Set_Temp);
+	}
 }
 Uint8 AVG(Uint8 *Data)
 {
-    Uint8 s=0;
-    for(Uint8 i=0;i<10;i++)
-    {
-        s+=Data[i];
-    }
-    return s/10;
+	Uint16 s=0;
+	for (Uint8 i=0;i<10;i++)
+	{
+		s+=Data[i];
+	}
+	return ((Uint8)(s/10));
 }

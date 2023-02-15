@@ -1,11 +1,11 @@
 
-#include "Timers.h"
-#include "app.h"
+
 #include <avr/interrupt.h>
+#include "app.h"
+extern Uint8 state,Set_Temp,Avg_Temp;
+extern Uint8 Temp_Arr[10];
 
 
-extern Uint8 state,Set_Temp,Avg_Temp,Temp_Arr[10];
-Uint8 c=0;
 
 // Timer0 variables
 Uint16 T0_OVF_num = 0;
@@ -41,7 +41,7 @@ void T0_Init(void)
 void T0_Delay(Uint32 delay_ms)
 {
 	f32 Tick_Time_us = (f32)(Timer0_PreSC) / F_OSC_MHZ;
-	Uint32 Tick_num = (delay_ms * 1000)/ Tick_Time_us; 
+	Uint32 Tick_num = (delay_ms * 1000)/ Tick_Time_us;
 	
 	#if Timer0_Mode == T0_OVF
 	
@@ -57,7 +57,7 @@ void T0_Delay(Uint32 delay_ms)
 	T0_OCF_Init_val = (Tick_num % 256) - 1;
 	OCR0 = T0_OCF_Init_val;
 
-	#endif	
+	#endif
 }
 void T0_Start(void)
 {
@@ -66,10 +66,10 @@ void T0_Start(void)
 void T0_Stop(void)
 {
 	TCCR0 &= 0XF8;		//	   1 1 0 1 | 0 1 0 1
-						//	  &
-						//     1 1 1 1 | 1 0 0 0
-						//     -----------------
-						//     1 1 0 1 | 0 0 0 0
+	//	  &
+	//     1 1 1 1 | 1 0 0 0
+	//     -----------------
+	//     1 1 0 1 | 0 0 0 0
 }
 
 ISR(TIMER0_OVF_vect)
@@ -78,30 +78,30 @@ ISR(TIMER0_OVF_vect)
 	count++;
 	if (count == T0_OVF_num)
 	{
-
-
-		Avg_Temp=69;
+		// --------------------------------------
+		//------------------------------------------------
 		if (state==SET)
 		{
 			state=ON;
 		}
 		else if (state==ON)
 		{
-			Avg_Temp=69;
+			static Uint8 c=0;
 			Temp_Arr[c%10]=Temp_Sensor_Read();
 			c++;
-			//Avg_Temp=AVG(Temp_Arr);
-			Avg_Temp=ADC_Read(0)/1024*5;
+			Avg_Temp=AVG(Temp_Arr);
 			T0_Delay(T_Temp);
 			T0_Start();
-			
-			
 		}
+		//----------------------
+		//---------------------------------------
 		
-				T0_G_Val++;
-				count = 0;
-				TCNT0 = T0_OVF_Init_val;
-			}
+		
+		
+		T0_G_Val++;
+		count = 0;
+		TCNT0 = T0_OVF_Init_val;
+	}
 	
 }
 
@@ -109,32 +109,12 @@ ISR(TIMER0_COMP_vect)
 {
 	static Uint32 count = 0;
 	count++;
-	Avg_Temp=69;
-	c++;
-
 	if (count == T0_OCF_num)
 	{
-		Avg_Temp=69;
-		//------------
-		if (state==SET)
-		{
-			state=ON;
-		}
-		else if (state==ON)
-		{
-			Avg_Temp=69;
-			Temp_Arr[count%10]=Temp_Sensor_Read();
-			c++;
-			Avg_Temp=AVG(Temp_Arr);
-			
-			T0_Delay(T_Temp);
-			T0_Start();
-			
-			
-		}
-
-		// -----------
+		// Write your code here
 		T0_G_Val++;
+		
+		
 		count = 0;
 		OCR0 = T0_OCF_Init_val;
 	}
@@ -186,10 +166,10 @@ void T2_Start(void)
 void T2_Stop(void)
 {
 	TCCR2 &= 0XF8;		//	   1 1 0 1 | 0 1 0 1
-						//	  &
-						//     1 1 1 1 | 1 0 0 0
-						//     -----------------
-						//     1 1 0 1 | 0 0 0 0
+	//	  &
+	//     1 1 1 1 | 1 0 0 0
+	//     -----------------
+	//     1 1 0 1 | 0 0 0 0
 }
 
 ISR(TIMER2_OVF_vect)
@@ -199,21 +179,6 @@ ISR(TIMER2_OVF_vect)
 	if (count == T2_OVF_num)
 	{
 		// Write your code here
-		T2_G_Val++;
-		
-		
-		count = 0;
-		TCNT2 = T2_OVF_Init_val;
-	}
-	
-}
-
-ISR(TIMER2_COMP_vect)
-{
-	static Uint32 count = 0;
-	count++;
-	if (count == T2_OCF_num)
-	{
 		//--------------
 		if(state==ON)
 		{
@@ -229,7 +194,27 @@ ISR(TIMER2_COMP_vect)
 			T2_Start();
 		}
 		//--------------
+		
+		
+		
+		
 		T2_G_Val++;
+		count = 0;
+		TCNT2 = T2_OVF_Init_val;
+	}
+	
+}
+
+ISR(TIMER2_COMP_vect)
+{
+	static Uint32 count = 0;
+	count++;
+	if (count == T2_OCF_num)
+	{
+		// Write your code here
+		T2_G_Val++;
+		
+		
 		count = 0;
 		OCR2 = T2_OCF_Init_val;
 	}

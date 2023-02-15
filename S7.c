@@ -1,8 +1,9 @@
 
-#include "S7.h"
+
 #define F_CPU 16000000
 #include <util/delay.h>
 
+#include "S7.h"
 // S7 Functions
 Uint8 Nums[10] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
 void S7_Init(void)

@@ -4,23 +4,24 @@
 
 
 Uint8 state=OFF,Set_Temp=60,Avg_Temp=74;
-Uint8 Temp_Arr[10]={60,60,60,60,60,60,60,60,60,60};
+Uint8 Temp_Arr[10]={10,10,0,50,60,30,10,50,50,50};
 
 
 int main(void)
 {
 	App_Init();
-	state=ON;
-	T0_Init();
-	Temp_Sensor_Init();
-	//T0_Delay(T_Temp);
-	//T0_Start();
-
 	
 	while(1)
 	{
-
-		S7_Display(Temp_Sensor_Read());
+		switch (state)
+		{
+			case ON:
+			State_On(); break;
+			case OFF:
+			State_Off(); break;
+			case SET:
+			State_Set_Temp(); break;
+		}
 	}
 }
 
@@ -38,6 +39,9 @@ ISR(INT1_vect)
 		Set_Temp=MAX_TEMP;
 	}
 	EEPROM_WriteByte(Addr,Set_Temp);
+    T0_Delay(T_Set);
+    T0_Start();
+
 }
 
 ISR(INT2_vect)
@@ -49,5 +53,7 @@ ISR(INT2_vect)
 		Set_Temp=MIN_TEMP;
 	}
 	EEPROM_WriteByte(Addr,Set_Temp);
-}
+    T0_Delay(T_Set);
+    T0_Start();
 
+}
