@@ -6,6 +6,7 @@
 #include "S7.h"
 // S7 Functions
 Uint8 Nums[10] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+Uint8 ONF=0;
 void S7_Init(void)
 {
 	// S7 Data Pins Direction
@@ -37,10 +38,15 @@ void S7_Init(void)
 	DIO_SetPin_Val(S7_Control_Port, S7_E1_PIN, DIO_PIN_ON);
 	DIO_SetPin_Val(S7_Control_Port, S7_E2_PIN, DIO_PIN_ON);
 	DIO_SetPin_Val(S7_DP_Port, S7_DP_PIN, DIO_PIN_ON);
+
 	
 }
 void S7_Display(Uint8 data)
 {
+	if (!ONF)
+	{
+		return;
+	}
 	Uint8 Ones = 0, Tens = 0;
 	data = (data >= 0) && (data < 100) ? data : 0;
 	Ones = data % 10;
@@ -59,14 +65,24 @@ void S7_Turn_Off()
 {
 	DIO_SetPin_Val(S7_Control_Port, S7_E1_PIN, DIO_PIN_ON);
 	DIO_SetPin_Val(S7_Control_Port, S7_E2_PIN, DIO_PIN_ON);
+	ONF=OFF;
 }
 void S7_Turn_ON()
 {
 	DIO_SetPin_Val(S7_Control_Port, S7_E1_PIN, DIO_PIN_OFF);
 	DIO_SetPin_Val(S7_Control_Port, S7_E2_PIN, DIO_PIN_OFF);
+	ONF=ON;
 }
 void S7_Toggle()
 {
-	DIO_TogglePin(S7_Control_Port, S7_E1_PIN);
-	DIO_TogglePin(S7_Control_Port, S7_E2_PIN);
+	if (ONF)
+	{
+		S7_Turn_Off();
+	}
+	else
+	{
+		S7_Turn_ON();
+	}
+// 	DIO_TogglePin(S7_Control_Port, S7_E1_PIN);
+// 	DIO_TogglePin(S7_Control_Port, S7_E2_PIN);
 }

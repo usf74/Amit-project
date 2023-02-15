@@ -14,6 +14,7 @@ void S7_Turn_Off();
 void S7_Turn_ON();
 void S7_Toggle();
 
-
+#define ON 1
+#define OFF 0
 
 #endif /* S7_H_ */
