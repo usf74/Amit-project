@@ -12,6 +12,7 @@ void App_Init()
     EXT0_INT_Init();
     EXT1_INT_Init();
     EXT2_INT_Init();
+	S7_Init();
     EEPROM_WriteByte(Addr,Set_Temp);
 
     state=OFF;
@@ -69,7 +70,7 @@ void State_On()
         Cooling_Element_OFF();
         Heating_Element_OFF();
         LED0_OFF();
-        while ((Avg_Temp>=(Set_Temp-Thresh_Temp)) && ((Avg_Temp<=Set_Temp+(Thresh_Temp))) && (state==ON));    //Loop to await change in temperature with a +-5 threshold
+        while ((Avg_Temp>=(Set_Temp-Thresh_Temp)) && ((Avg_Temp<=(Set_Temp+Thresh_Temp))) && (state==ON));    //Loop to await change in temperature with a +-5 threshold
     }
 
 }

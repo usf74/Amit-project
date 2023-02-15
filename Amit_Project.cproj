@@ -142,15 +142,6 @@
     <Compile Include="Bit_Math.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Button.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Button.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Button_CFG.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Cooling_Element.h">
       <SubType>compile</SubType>
     </Compile>

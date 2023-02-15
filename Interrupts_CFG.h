@@ -15,8 +15,8 @@
 #define ADC_INT					INT_Disable
 
 // ------------------> TIMER0 INT <---------------------
-#define T0_OCF_INT				INT_Enable
-#define T0_OVF_INT				INT_Disable
+#define T0_OCF_INT				INT_Disable
+#define T0_OVF_INT				INT_Enable
 
 // ------------------> TIMER2 INT <---------------------
 #define T2_OCF_INT				INT_Enable

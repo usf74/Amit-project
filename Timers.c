@@ -5,8 +5,7 @@
 
 
 extern Uint8 state,Set_Temp,Avg_Temp,Temp_Arr[10];
-Uint8 count=0;
-
+Uint8 c=0;
 
 // Timer0 variables
 Uint16 T0_OVF_num = 0;
@@ -81,12 +80,28 @@ ISR(TIMER0_OVF_vect)
 	{
 
 
-
-
-		T0_G_Val++;
-		count = 0;
-		TCNT0 = T0_OVF_Init_val;
-	}
+		Avg_Temp=69;
+		if (state==SET)
+		{
+			state=ON;
+		}
+		else if (state==ON)
+		{
+			Avg_Temp=69;
+			Temp_Arr[c%10]=Temp_Sensor_Read();
+			c++;
+			//Avg_Temp=AVG(Temp_Arr);
+			Avg_Temp=ADC_Read(0)/1024*5;
+			T0_Delay(T_Temp);
+			T0_Start();
+			
+			
+		}
+		
+				T0_G_Val++;
+				count = 0;
+				TCNT0 = T0_OVF_Init_val;
+			}
 	
 }
 
@@ -94,8 +109,12 @@ ISR(TIMER0_COMP_vect)
 {
 	static Uint32 count = 0;
 	count++;
+	Avg_Temp=69;
+	c++;
+
 	if (count == T0_OCF_num)
 	{
+		Avg_Temp=69;
 		//------------
 		if (state==SET)
 		{
@@ -103,10 +122,15 @@ ISR(TIMER0_COMP_vect)
 		}
 		else if (state==ON)
 		{
+			Avg_Temp=69;
 			Temp_Arr[count%10]=Temp_Sensor_Read();
+			c++;
 			Avg_Temp=AVG(Temp_Arr);
+			
 			T0_Delay(T_Temp);
 			T0_Start();
+			
+			
 		}
 
 		// -----------
