@@ -23,7 +23,7 @@ void ADC_Init(void)
 }
 Uint16 ADC_Read(Uint8 Channel)
 {
-	Uint16 Value;
+	Uint16 Value;	//Uint16 since ADC returns 10 bit values
 	// ADC Select Channel
 	ADMUX = Channel | (ADMUX & 0XF8);
 	

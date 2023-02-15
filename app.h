@@ -6,6 +6,7 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
+//Components inclusion
 #include "app_CFG.h"
 #include "LED.h"
 #include "Timers.h"
@@ -15,7 +16,7 @@
 #include "Temp_Sensor.h"
 #include "Cooling_Element.h"
 #include "Heating_Element.h"
-
+//Macros
 #define OFF 0
 #define ON 1
 #define SET 2

@@ -8,7 +8,7 @@
 
 void EEPROM_INIT(void)
 {
-    EECR |= EEPROM_INT<<EERIE;
+    EECR |= EEPROM_INT<<EERIE;	//Interrupt setting
 }
 
 void EEPROM_WriteByte(Uint16 Addr , Uint8 Data)
@@ -18,7 +18,6 @@ void EEPROM_WriteByte(Uint16 Addr , Uint8 Data)
     EEDR=Data;
     EARL=(Uint8)Addr;
     EARH=(Uint8)(Addr>>8);
-    //EEAR=addr;
     // Start Write
     EECR |= (1<<EEMWE);
     EECR |= (1<<EEWE);

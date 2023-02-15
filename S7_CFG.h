@@ -5,9 +5,9 @@
 #include "DIO.h"
 
 // S7 Ports
-#define S7_Data_Port		DIO_PORTC
-#define S7_Data_Bus			PORTC
-#define S7_Control_Port		DIO_PORTD
+#define S7_Data_Port		DIO_PORTC	//Port for data pins
+#define S7_Data_Bus			PORTC		//Port that will have data written on
+#define S7_Control_Port		DIO_PORTD	//Port that contains enable pins
 #define S7_DP_Port			DIO_PORTD	//Dot point
 
 // S7 Data Pins
@@ -22,7 +22,7 @@
 // S7 Control Pins
 #define S7_E1_PIN			DIO_PIN_1
 #define S7_E2_PIN			DIO_PIN_0
-#define S7_DP_PIN			DIO_PIN_6
+#define S7_DP_PIN			DIO_PIN_6	//Dot point
 
 
 

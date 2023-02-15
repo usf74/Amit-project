@@ -78,22 +78,24 @@ ISR(TIMER0_OVF_vect)
 	count++;
 	if (count == T0_OVF_num)
 	{
-		// --------------------------------------
+		// ------------------Actual Function that will occur when set time happens--------------------
 		//------------------------------------------------
-		if (state==SET)
+		if (state==SET)	//In set mode this is the 5 seconds timer to change the state
 		{
 			state=ON;
 		}
 		else if (state==ON)
 		{
+			//In on state the timer measures the temperature each 100 ms 
 			static Uint8 c=0;
-			Temp_Arr[c%10]=Temp_Sensor_Read();
+			Temp_Arr[c%10]=Temp_Sensor_Read();	//Read sensor and store value in array
 			c++;
-			Avg_Temp=AVG(Temp_Arr);
+			Avg_Temp=AVG(Temp_Arr);	//Calculate average temperature
+			//Restart timer for next measurement
 			T0_Delay(T_Temp);
 			T0_Start();
 		}
-		//----------------------
+		//-----------End of the desired function-----------
 		//---------------------------------------
 		
 		
@@ -105,13 +107,13 @@ ISR(TIMER0_OVF_vect)
 	
 }
 
-ISR(TIMER0_COMP_vect)
+ISR(TIMER0_COMP_vect)	//Used in comp mode 
 {
 	static Uint32 count = 0;
 	count++;
 	if (count == T0_OCF_num)
 	{
-		// Write your code here
+
 		T0_G_Val++;
 		
 		
@@ -165,11 +167,7 @@ void T2_Start(void)
 }
 void T2_Stop(void)
 {
-	TCCR2 &= 0XF8;		//	   1 1 0 1 | 0 1 0 1
-	//	  &
-	//     1 1 1 1 | 1 0 0 0
-	//     -----------------
-	//     1 1 0 1 | 0 0 0 0
+	TCCR2 &= 0XF8;		
 }
 
 ISR(TIMER2_OVF_vect)
@@ -178,22 +176,24 @@ ISR(TIMER2_OVF_vect)
 	count++;
 	if (count == T2_OVF_num)
 	{
-
-		//--------------
-		if(state==ON)
+		// ------------------Actual Function that will occur when set time happens--------------------
+		//------------------------------------------------
+		if(state==ON)	//In ON state this timer controls the blinking of LED in heating mode
 		{
 			LED0_Toggle();
-
+			//Restart timer
 			T2_Delay(T_Blink);
 			T2_Start();
 		}
-		else if (state==SET)
+		else if (state==SET)	//In set mode this timer blinks the 7 segment display
 		{
 			S7_Toggle();
+			//Restart timer
 			T2_Delay(T_Blink);
 			T2_Start();
 		}
-		//--------------
+		//-----------End of the desired function-----------
+		//---------------------------------------
 		
 		
 		
@@ -205,16 +205,15 @@ ISR(TIMER2_OVF_vect)
 	
 }
 
-ISR(TIMER2_COMP_vect)
+ISR(TIMER2_COMP_vect)	//Used in comp mode
 {
 	static Uint32 count = 0;
 	count++;
 	if (count == T2_OCF_num)
 	{
-		// Write your code here
+		
+		
 		T2_G_Val++;
-		
-		
 		count = 0;
 		OCR2 = T2_OCF_Init_val;
 	}

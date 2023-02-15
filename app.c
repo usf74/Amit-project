@@ -1,9 +1,8 @@
 
 #include "app.h"
 extern Uint8 state,Set_Temp,Avg_Temp;
-void App_Init()
+void App_Init()	//Function to Initialize all components
 {
-	EEPROM_WriteByte(Addr,Set_Temp);
     T0_Init();
     T2_Init();
     Temp_Sensor_Init();
@@ -16,11 +15,9 @@ void App_Init()
 	Set_Temp=Default_Temp;
 	EEPROM_WriteByte(Addr,Set_Temp);
 	S7_Init();
-    
-
     state=OFF;
 }
-void State_Off()
+void State_Off()	//Function to go into off mode
 { 
     //Turn off and await on button
     T0_Stop();
@@ -32,44 +29,43 @@ void State_Off()
 
     while (state==OFF); //Await interrupt of ON button
 }
-void State_On()
+void State_On()	//Normal operation mode
 {
     S7_Turn_ON();
-    Set_Temp=EEPROM_ReadByte(Addr);
+    Set_Temp=EEPROM_ReadByte(Addr);	//Read set temp by user from EEPROM
 
     //Start timer for temp measurement
     T0_Delay(T_Temp);
 	T0_Start();
     
-    if (Avg_Temp<(Set_Temp-Thresh_Temp))
+    if (Avg_Temp<(Set_Temp-Thresh_Temp))	//Heating condition
     {
 		//Start timer for LED Blinking
 		T2_Delay(T_Blink);
 		T2_Start();
-        //Heating
+        //Heating start
         Cooling_Element_OFF();
         Heating_Element_ON();
         
-        while((Avg_Temp<Set_Temp) && (state==ON))
+        while((Avg_Temp<Set_Temp) && (state==ON))	//Await Till water is heated
         {
             S7_Display(Avg_Temp);
         }
     }
 
-    else if (Avg_Temp>(Set_Temp+Thresh_Temp))
+    else if (Avg_Temp>(Set_Temp+Thresh_Temp))	//Cooling condition
     {
-
 		LED0_ON();
         //Start cooling
         Cooling_Element_ON();
         Heating_Element_OFF();
-        while((Avg_Temp>Set_Temp) && (state==ON))
+        while((Avg_Temp>Set_Temp) && (state==ON))	//Await Till water is cooled
         {
             S7_Display(Avg_Temp);
         }
     }
 
-    else
+    else	// Water has reached set temperature and now device keeps monitoring and viewing temperature
     {
         T2_Stop();
         Cooling_Element_OFF();
@@ -82,18 +78,17 @@ void State_On()
     }
 
 }
-void State_Set_Temp()
+void State_Set_Temp()	//State when Up and down buttons are pressed
 {
-    // 5 seconds timer start
-
+    // Blink Timer start
     T2_Delay(T_Blink);
     T2_Start();
-    while(state==SET)
+    while(state==SET)	//Await change of state from timer interrupt
 	{
-		S7_Display(Set_Temp);
+		S7_Display(Set_Temp);	//View chosen temperature
 	}
 }
-Uint8 AVG(Uint8 *Data)
+Uint8 AVG(Uint8 *Data)	//Function to find the average of temperature array for decision
 {
 	Uint16 s=0;
 	for (Uint8 i=0;i<10;i++)
