@@ -1,0 +1,1 @@
+Please note. In the simulation. due to the constant switching (on and off) between the 2 seven segment displays, Proteus may not show the numbers on the display. when it does so please use the next frame button to see the display (Button next to run button)
